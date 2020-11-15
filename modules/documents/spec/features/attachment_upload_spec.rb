@@ -52,6 +52,8 @@ describe 'Upload attachment to documents', js: true do
     it 'can upload an image' do
       visit new_project_document_path(project)
 
+      sleep(1)
+
       expect(page).to have_selector('#new_document', wait: 10)
       select(category.name, from: 'Category')
       fill_in "Title", with: 'New documentation'
@@ -75,6 +77,8 @@ describe 'Upload attachment to documents', js: true do
       expect(page).to have_current_path "/documents/#{document.id}", wait: 10
       expect(page).to have_selector('#content img', count: 1)
       expect(page).to have_content('Image uploaded on creation')
+
+      sleep(1)
 
       # Adding a second image
       find('.toolbar-items .button', text: 'Edit').click
